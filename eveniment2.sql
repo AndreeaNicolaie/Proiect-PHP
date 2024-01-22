@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gazdă: 127.0.0.1:3306
--- Timp de generare: nov. 21, 2023 la 09:55 AM
+-- Timp de generare: ian. 22, 2024 la 05:19 PM
 -- Versiune server: 8.0.31
 -- Versiune PHP: 8.0.26
 
@@ -42,8 +42,7 @@ CREATE TABLE IF NOT EXISTS `administrator` (
 --
 
 INSERT INTO `administrator` (`ID_Administrator`, `Nume`, `Prenume`, `Email`, `Parola`) VALUES
-(15, 'Negrea', 'Florina', 'negreaflorina3@gmail.com', '$2y$10$Dz5d9ZzPLpMMLdGmgd16MOGMIZ4SaBZR/xhWnQxfo/kbAbeG6g/52'),
-(16, 'Negrea', 'Catalin', 'negreacatalin27@gmail.com', '$2y$10$oAwL1wgpNVfBduxsg7G/AOtwg0YtaE5h3pHJe/A/KROAfaJsfzF6.');
+(15, 'Nicolaie', 'Andreea', 'nicolaieandreea22@yahoo.com', '12345');
 
 -- --------------------------------------------------------
 
@@ -124,7 +123,7 @@ CREATE TABLE IF NOT EXISTS `eveniment` (
 
 INSERT INTO `eveniment` (`ID_Eveniment`, `Nume_Eveniment`, `Descriere`, `Image_path`, `Data_Start`, `Data_Finish`, `Locatie`, `Numar_Participant_Maxim`) VALUES
 (1, 'The Hunger Games: The Ballad of Songbirds & Snakes', 'Don\'t miss the new Hunger Game movie! Enjoy a special screening, a Q&A session with the actors, and a chance for a photo with them', 'event-image.jpg', '2023-12-14 13:30:00', '2023-12-14 19:30:00', 'Cluj-Napoca Cineplexx', 150),
-(2, 'Anyone but you', 'Don&#039;t miss the new movie Anyone but you! Enjoy a special screening, a Q&amp;A session with the actors, and a chance for a photo with them', 'event-image1.jpg', '2023-11-24 12:00:00', '2023-11-24 18:00:00', 'Targu Mures Cineplexx', 200);
+(2, 'Anyone but you', 'Don t miss the new movie Anyone but you! Enjoy a special screening, a Q&A session with the actors, and a chance for a photo with them', 'event-image1.jpg', '2023-11-24 12:00:00', '2023-11-24 18:00:00', 'Targu Mures Cineplexx', 200);
 
 -- --------------------------------------------------------
 
@@ -169,7 +168,7 @@ CREATE TABLE IF NOT EXISTS `partener` (
   PRIMARY KEY (`ID_Partener`),
   KEY `partener_id_pachet_foreign` (`ID_Pachet`),
   KEY `partener_id_eveniment_foreign` (`ID_Eveniment`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Eliminarea datelor din tabel `partener`
@@ -177,7 +176,8 @@ CREATE TABLE IF NOT EXISTS `partener` (
 
 INSERT INTO `partener` (`ID_Partener`, `Nume_Partener`, `Descriere`, `Contact_Nume`, `Contact_Email`, `Contact_Telefon`, `ID_Eveniment`, `ID_Pachet`) VALUES
 (1, 'Cineplexx', 'Cinematograf', 'Alina Stoica', 'alina.stoica@gmail.com', '0722640356', 1, 3),
-(2, 'Radio Romania Cluj', 'Radio Station', 'Carmen Muresan', 'carmen.muresan@gmail.com', '0726341298', 1, 2);
+(2, 'Radio Romania Cluj', 'Radio Station', 'Carmen Muresan', 'carmen.muresan@gmail.com', '0726341298', 1, 2),
+(3, 'Eventim', 'bilete', 'Pop Maria', 'contact@eventim.ro', '0795642589', 3, 3);
 
 -- --------------------------------------------------------
 
@@ -200,8 +200,8 @@ CREATE TABLE IF NOT EXISTS `participant` (
 --
 
 INSERT INTO `participant` (`ID_Participant`, `Nume`, `Prenume`, `Email`, `Telefon`) VALUES
-(1, 'Negrea', 'Florina', 'negreaflorina366@yahoo.com', '0740537649'),
-(2, 'Florea', 'Maria', 'floreamaria@gmail.com', '0722345612');
+(2, 'Nicolaie', 'Ana', 'ananicolaie@yahoo.com', '0745896320'),
+(1, 'Pop', 'Andrei', 'andrei543@gmail.com', '07596865785');
 
 -- --------------------------------------------------------
 
@@ -301,7 +301,8 @@ CREATE TABLE IF NOT EXISTS `sponsor` (
 
 INSERT INTO `sponsor` (`ID_Sponsor`, `Nume_Sponsor`, `Descriere`, `Contact_Nume`, `Contact_Email`, `Contact_Telefon`, `ID_Eveniment`) VALUES
 (2, 'Banca Transilvania', 'Suntem cea mai mare bancă din România și din Europa de Sud-Est și credem că, dacă România merge bine, și BT merge bine.', 'Togorean Ionut', 'ionut.togorean@btdirect.ro', '0755844137', 1),
-(3, 'Audi', 'AUDI AG este un producător de automobile din Germania, cu sediul în Ingolstadt, landul Bavaria.', 'Taurean Raul', 'raul.taurean@audi.ro', '0743659841', 1);
+(3, 'Audi', 'AUDI AG este un producător de automobile din Germania, cu sediul în Ingolstadt, landul Bavaria.', 'Taurean Raul', 'raul.taurean@audi.ro', '0743659841', 1),
+(1, 'Apa Bucovina', 'Bucovina setea de echilibru', 'Cristea Gorgia', 'office_bucuresti@maspex.ro', '021 667 42 16', 3);
 
 -- --------------------------------------------------------
 
@@ -318,7 +319,7 @@ CREATE TABLE IF NOT EXISTS `tbl_cart` (
   PRIMARY KEY (`Cart_ID`),
   KEY `fk_ticket_id` (`Ticket_ID`),
   KEY `fk_user_id` (`User_ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Eliminarea datelor din tabel `tbl_cart`
@@ -327,7 +328,10 @@ CREATE TABLE IF NOT EXISTS `tbl_cart` (
 INSERT INTO `tbl_cart` (`Cart_ID`, `User_ID`, `Ticket_ID`, `Quantity`) VALUES
 (9, 1, 14, 3),
 (10, 1, 15, 2),
-(11, 1, 13, 1);
+(11, 1, 13, 1),
+(12, 1, 14, 3),
+(13, 1, 15, 2),
+(14, 1, 13, 1);
 
 -- --------------------------------------------------------
 
@@ -340,10 +344,17 @@ CREATE TABLE IF NOT EXISTS `users` (
   `ID_User` int NOT NULL AUTO_INCREMENT,
   `Nume` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `Prenume` varchar(50) NOT NULL,
-  `Password` varchar(255) NOT NULL,
+  `Parola` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `Email` varchar(100) NOT NULL,
   PRIMARY KEY (`ID_User`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Eliminarea datelor din tabel `users`
+--
+
+INSERT INTO `users` (`ID_User`, `Nume`, `Prenume`, `Parola`, `Email`) VALUES
+(1, 'Pop', 'George', '$2y$10$SGISiUvWJZvjXPKpf/lLA.nIKRkwT4cF4CsRO0TzDx36cGCREk6wG', 'george@yahoo.com');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
